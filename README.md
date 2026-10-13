@@ -1,12 +1,12 @@
 # ⚡ DualCode — Multi-Agent Code Writer & Senior Reviewer
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/Google-Gemini%20Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
-  <img src="https://img.shields.io/badge/Multi--Agent-Closed--Loop-7928CA?style=for-the-badge" alt="Multi-Agent" />
-  <img src="https://img.shields.io/badge/Pytest-Sandbox%20Isolation-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" alt="Pytest" />
-  <img src="https://img.shields.io/badge/Streamlit-Studio%20UI-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit" />
-  <img src="https://img.shields.io/badge/License-MIT-9945FF?style=for-the-badge" alt="License MIT" />
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Google%20Gemini-Flash-4285F4?logo=google&logoColor=white" alt="Google Gemini" />
+  <img src="https://img.shields.io/badge/Multi--Agent-Closed--Loop-8B5CF6" alt="Multi-Agent" />
+  <img src="https://img.shields.io/badge/Pytest-Sandboxed-0A9EDC?logo=pytest&logoColor=white" alt="Pytest" />
+  <img src="https://img.shields.io/badge/Streamlit-Studio%20UI-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit" />
+  <img src="https://img.shields.io/badge/License-MIT-10B981" alt="License MIT" />
 </p>
 
 A self-correcting multi-agent system where a **Writer agent** writes Python functions, a **Critic agent** reviews code like a senior engineer, and a deterministic **Orchestrator** (zero LLM calls) manages iterative refinement up to strict mathematical stopping conditions.
