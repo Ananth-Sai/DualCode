@@ -154,7 +154,7 @@ def main(
     task_id: str | None,
     max_rounds: int,
 ):
-    """Critic Loop: Multi-Agent Code Writer & Reviewer CLI."""
+    """DualCode: Multi-Agent Code Writer & Reviewer CLI."""
     if ctx.invoked_subcommand is None:
         if prompt or task_id:
             execute_task_or_prompt(
@@ -171,7 +171,7 @@ def main(
 def list_tasks():
     """List all available tasks in the task bank."""
     tasks = load_task_bank()
-    table = Table(title="Critic Loop - Task Bank", header_style="bold magenta")
+    table = Table(title="DualCode - Task Bank", header_style="bold magenta")
     table.add_column("ID", style="cyan", no_wrap=True)
     table.add_column("Title", style="bold white")
     table.add_column("Difficulty", style="yellow")
@@ -211,9 +211,9 @@ def run_task(
 @main.command(name="eval")
 @click.option("--count", default=None, type=int, help="Number of tasks to evaluate (default: all)")
 @click.option("--difficulty", default=None, type=click.Choice(["easy", "medium", "hard"]), help="Filter by difficulty")
-@click.option("--max-rounds", default=3, show_default=True, type=int, help="Maximum rounds in Critic loop")
+@click.option("--max-rounds", default=3, show_default=True, type=int, help="Maximum rounds in DualCode loop")
 def evaluate(count: int | None, difficulty: str | None, max_rounds: int):
-    """Run the evaluation harness (Baseline vs. Critic Loop) and render the scorecard."""
+    """Run the evaluation harness (Baseline vs. DualCode Loop) and render the scorecard."""
     tasks = load_task_bank()
     if difficulty:
         tasks = [t for t in tasks if t.difficulty == difficulty]
@@ -224,7 +224,7 @@ def evaluate(count: int | None, difficulty: str | None, max_rounds: int):
 
     # Render Scorecard Summary
     console.print("\n")
-    summary_table = Table(title="Critic Loop - Evaluation Scorecard", header_style="bold green")
+    summary_table = Table(title="DualCode - Evaluation Scorecard", header_style="bold green")
     summary_table.add_column("Metric", style="bold white")
     summary_table.add_column("Score / Value", style="bold yellow")
     summary_table.add_column("Evaluation Meaning", style="dim")
@@ -236,13 +236,13 @@ def evaluate(count: int | None, difficulty: str | None, max_rounds: int):
         "Writer 1-shot without Critic",
     )
     summary_table.add_row(
-        "Critic Loop Pass Rate",
+        "DualCode Pass Rate",
         f"{scorecard['critic_loop_pass_rate'] * 100:.1f}%",
-        "Final code after Critic Loop",
+        "Final code after DualCode",
     )
     lift_val = scorecard["lift"]
     lift_str = f"[bold green]+{lift_val*100:.1f}%[/bold green]" if lift_val >= 0 else f"[bold red]{lift_val*100:.1f}%[/bold red]"
-    summary_table.add_row("Headline Lift", lift_str, "Improvement from Critic Loop")
+    summary_table.add_row("Headline Lift", lift_str, "Improvement from DualCode")
     summary_table.add_row(
         "Critic Catch Rate",
         f"{scorecard.get('critic_intervention_rate', 0.0) * 100:.1f}%",

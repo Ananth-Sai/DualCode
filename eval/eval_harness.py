@@ -19,11 +19,11 @@ def run_evaluation(
     max_rounds: int = config.MAX_ROUNDS,
     output_dir: Path | str = DEFAULT_EVAL_DIR,
 ) -> dict[str, Any]:
-    """Execute evaluation harness comparing Baseline vs Critic Loop across tasks.
+    """Execute evaluation harness comparing Baseline vs DualCode Loop across tasks.
 
     For every task:
     1. Baseline: Writer once -> Ground Truth pytest execution.
-    2. Critic Loop: Full Orchestrated loop -> Ground Truth pytest execution.
+    2. DualCode Loop: Full Orchestrated loop -> Ground Truth pytest execution.
 
     Aggregates pass rates, lift, false-approval rate, and stall rate,
     and persists a timestamped JSON scorecard report.
@@ -63,7 +63,7 @@ def run_evaluation(
 
         print(f"  * Baseline: {'PASSED' if base_passed else 'FAILED'} ({base_latency}s)")
 
-        # --- 2. Critic Loop Run (Iterative loop) ---
+        # --- 2. DualCode Loop Run (Iterative loop) ---
         t0_loop = time.time()
         loop_res = run_loop(task, max_rounds=max_rounds)
         loop_test_res = run_hidden_tests(loop_res["final_code"], task)
@@ -91,7 +91,7 @@ def run_evaluation(
             stalls += 1
 
         print(
-            f"  * Critic Loop: {'PASSED' if loop_passed else 'FAILED'} "
+            f"  * DualCode Loop: {'PASSED' if loop_passed else 'FAILED'} "
             f"(Rounds: {rounds_used}, Reason: {stopped_reason}, Latency: {loop_latency}s)"
         )
         if is_false_approval:
@@ -179,7 +179,7 @@ def run_evaluation(
     print(f"\n=======================================================")
     print(f"Evaluation Complete! Saved report to: {report_file}")
     print(f"Baseline Pass Rate:       {baseline_pass_rate * 100:.1f}%")
-    print(f"Critic Loop Pass Rate:    {critic_loop_pass_rate * 100:.1f}%")
+    print(f"DualCode Pass Rate:       {critic_loop_pass_rate * 100:.1f}%")
     print(f"Headline Lift:            {lift * 100:+.1f}%")
     print(f"Critic Catch Rate:        {critic_intervention_rate * 100:.1f}% ({critic_intervention_count} tasks caught & revised)")
     print(f"Revision Success Rate:    {revision_success_rate * 100:.1f}%")

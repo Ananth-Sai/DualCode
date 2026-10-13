@@ -1,12 +1,16 @@
-# ⚡ Critic Loop — Multi-Agent Code Writer & Senior Reviewer
+# ⚡ DualCode — Multi-Agent Code Writer & Senior Reviewer
 
 A self-correcting multi-agent system where a **Writer agent** writes Python functions, a **Critic agent** reviews code like a senior engineer, and a deterministic **Orchestrator** (zero LLM calls) manages iterative refinement up to strict mathematical stopping conditions.
 
-Engineered as a **closed-loop cybernetic system**: rather than an open-loop pipeline that fires a single prompt and blindly trusts the output, Critic Loop continuously samples candidate state (the code), measures error against 5 engineering dimensions (the Critic sensor), and applies deterministic negative feedback (the Orchestrator controller) to guide the code toward proven convergence before sandboxed execution.
+Engineered as a **closed-loop cybernetic system**: rather than an open-loop pipeline that fires a single prompt and blindly trusts the output, DualCode continuously samples candidate state (the code), measures error against 5 engineering dimensions (the Critic sensor), and applies deterministic negative feedback (the Orchestrator controller) to guide the code toward proven convergence before sandboxed execution.
 
 Built with a relentless emphasis on **measuring and proving** that multi-agent collaboration actually improves code reliability over a single-pass baseline—not just creating an interactive demo that looks impressive.
 
 Given a programming specification, the system drafts an initial solution, executes an asymmetric code review across 5 rigorous engineering dimensions, applies targeted revisions, and runs the final code against hidden ground-truth unit tests in an isolated execution sandbox.
+
+<p align="center">
+  <img src="assets/dualcode_studio_interface.png" alt="DualCode Studio Interface" width="100%">
+</p>
 
 ---
 
@@ -24,7 +28,7 @@ Most "I built an agent" projects attempt to fix this with toy loops where two mo
 
 ## 📊 Results
 
-Empirical benchmark across **4 independent evaluation passes (60 total task evaluations)** on 15 multi-tier algorithmic tasks, comparing the single-pass Baseline against the multi-agent Critic Loop:
+Empirical benchmark across **4 independent evaluation passes (60 total task evaluations)** on 15 multi-tier algorithmic tasks, comparing the single-pass Baseline against the multi-agent DualCode loop:
 
 | Metric | Run 1 | Run 2 | Run 3 | Run 4 | 4-Run Average / Spread |
 | :--- | :---: | :---: | :---: | :---: | :--- |
@@ -82,7 +86,7 @@ Empirical benchmark across **4 independent evaluation passes (60 total task eval
                                                   ▼
 ┌───────────────────────────────────────┐ ┌──────────────────────────────┐
 │ 4. TEST RUNNER (sandbox/test_runner)  │ │ 5. EVAL HARNESS & CLI        │
-│ • Ground truth: Runs hidden tests in  │ │ • Baseline vs. Critic Loop   │
+│ • Ground truth: Runs hidden tests in  │ │ • Baseline vs. DualCode      │
 │   a sandboxed subprocess with timeout │ │ • Scorecards & Rich tables   │
 │ • Catches rubber-stamping & deadlocks │ │ • cli.py run / eval / list   │
 └───────────────────────────────────────┘ └──────────────────────────────┘
@@ -94,6 +98,10 @@ Empirical benchmark across **4 independent evaluation passes (60 total task eval
 
 ```
 .
+├── assets/                                   # UI and architecture snapshots
+│   ├── dualcode_studio_interface.png         # Main studio interface screenshot
+│   └── dualcode_debate_and_consensus.png     # Multi-agent debate and rubric audit screenshot
+│
 ├── agents/
 │   ├── writer.py                             # Writer agent: code generation, AST parser, failover
 │   └── critic.py                             # Critic agent: 5-dimension rubric, Pydantic structured output
@@ -104,7 +112,8 @@ Empirical benchmark across **4 independent evaluation passes (60 total task eval
 │   └── loader.py                             # Helper functions to load and filter task specifications
 │
 ├── sandbox/
-│   └── test_runner.py                        # Isolated subprocess pytest runner (timeouts, secret scrubbing)
+│   ├── test_runner.py                        # Isolated subprocess pytest runner (timeouts, secret scrubbing)
+│   └── dynamic_test_oracle.py                # Autonomous QA test synthesis for custom prompt ground truth
 │
 ├── eval/
 │   └── eval_harness.py                       # Benchmarking engine: Baseline vs Loop, Twin Canaries, Catch Rate
@@ -117,11 +126,11 @@ Empirical benchmark across **4 independent evaluation passes (60 total task eval
 │   ├── test_slice5.py                        # Subprocess sandbox isolation & timeout safety
 │   └── test_slice6_7.py                      # Eval harness integration & scorecard serialization
 │
+├── app.py                                    # Interactive Streamlit Web Studio (live debate, diffs, scorecards)
 ├── cli.py                                    # Interactive terminal CLI with Rich styling
 ├── orchestrator.py                           # Deterministic loop controller
 ├── config.py                                 # Environment loading & model failover configuration
 ├── requirements.txt                          # Python dependencies
-├── Critic Loop_ Architecture & Build Spec.md # 7-slice system architecture & build specification
 ├── .env.example                              # Template environment configuration
 └── README.md
 ```
@@ -158,23 +167,33 @@ cp .env.example .env
 
 ## 💻 Usage
 
-### 1. View Available Tasks
+### 1. Launch the Interactive Web Studio (Streamlit)
+Launch the visual multi-agent studio with side-by-side debate panels, interactive code diffs, and benchmark explorer:
+```bash
+streamlit run app.py
+```
+
+<p align="center">
+  <img src="assets/dualcode_debate_and_consensus.png" alt="DualCode Iterative Debate & Rubric Audit" width="100%">
+</p>
+
+### 2. View Available Tasks (CLI)
 ```bash
 python cli.py list
 ```
 
-### 2. Run a Single Task or Custom Prompt Live
+### 3. Run a Single Task or Custom Prompt Live (CLI)
 Watch the Writer and Critic collaborate in real time with syntax-highlighted terminal panels:
 ```bash
 # Run a pre-defined challenge from the task bank:
 python cli.py run --task task_012
 
 # Or run any custom prompt / out-of-scope question directly:
-python cli.py --prompt "Write a Python function to validate and normalize IPv6 addresses without using the ipaddress library."
+python cli.py run --prompt "Write a Python function to validate and normalize IPv6 addresses without using the ipaddress library."
 ```
 
-### 3. Run the Evaluation Benchmark
-Run the comparative evaluation harness (Baseline vs. Critic Loop):
+### 4. Run the Evaluation Benchmark
+Run the comparative evaluation harness (Baseline vs. DualCode):
 ```bash
 # Quick smoke test on 3 tasks
 python cli.py eval --count 3
@@ -183,7 +202,7 @@ python cli.py eval --count 3
 python cli.py eval
 ```
 
-### 4. Run the Slice Acceptance Tests
+### 5. Run the Slice Acceptance Tests
 Verify architectural components (8/12 run offline with zero API calls, 12/12 with a live Gemini key):
 ```bash
 python -m pytest tests/ -v

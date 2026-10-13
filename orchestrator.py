@@ -19,7 +19,7 @@ def run_loop(
     writer_fn: Callable[..., WriterOutput] = default_write_code,
     critic_fn: Callable[..., CritiqueResult] = default_review_code,
 ) -> dict[str, Any]:
-    """Execute the iterative Writer/Critic loop with deterministic stop conditions.
+    """Execute the iterative DualCode (Writer/Critic) loop with deterministic stop conditions.
 
     Zero LLM calls are made in this function directly; all control decisions
     (approval, stall detection, round ceiling) are deterministic pure Python.
@@ -69,6 +69,8 @@ def run_loop(
                 "verdict": critique.verdict,
                 "issues_count": len(critique.issues),
                 "summary": critique.summary,
+                "code": current_code,
+                "issues": [i.model_dump() for i in critique.issues],
             }
         )
 
