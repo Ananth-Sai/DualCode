@@ -1,5 +1,14 @@
 # ⚡ DualCode — Multi-Agent Code Writer & Senior Reviewer
 
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Google-Gemini%20Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
+  <img src="https://img.shields.io/badge/Multi--Agent-Closed--Loop-7928CA?style=for-the-badge" alt="Multi-Agent" />
+  <img src="https://img.shields.io/badge/Pytest-Sandbox%20Isolation-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" alt="Pytest" />
+  <img src="https://img.shields.io/badge/Streamlit-Studio%20UI-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit" />
+  <img src="https://img.shields.io/badge/License-MIT-9945FF?style=for-the-badge" alt="License MIT" />
+</p>
+
 A self-correcting multi-agent system where a **Writer agent** writes Python functions, a **Critic agent** reviews code like a senior engineer, and a deterministic **Orchestrator** (zero LLM calls) manages iterative refinement up to strict mathematical stopping conditions.
 
 Engineered as a **closed-loop cybernetic system**: rather than an open-loop pipeline that fires a single prompt and blindly trusts the output, DualCode continuously samples candidate state (the code), measures error against 5 engineering dimensions (the Critic sensor), and applies deterministic negative feedback (the Orchestrator controller) to guide the code toward proven convergence before sandboxed execution.
