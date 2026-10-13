@@ -1,0 +1,430 @@
+{
+  "run_timestamp": "20261012_090105",
+  "task_count": 15,
+  "baseline_pass_rate": 1.0,
+  "critic_loop_pass_rate": 1.0,
+  "lift": 0.0,
+  "avg_rounds_to_approve": 1.36,
+  "false_approval_rate": 0.0,
+  "false_rejection_count": 1,
+  "false_rejection_rate": 0.0667,
+  "stall_rate": 0.0667,
+  "critic_intervention_count": 5,
+  "critic_intervention_rate": 0.3333,
+  "revision_success_rate": 1.0,
+  "avg_baseline_latency_sec": 2.74,
+  "avg_loop_latency_sec": 8.97,
+  "per_task_results": [
+    {
+      "task_id": "task_001",
+      "title": "Reverse Words in a Sentence",
+      "difficulty": "easy",
+      "baseline_passed": true,
+      "baseline_pass_count": 4,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 2.05,
+      "loop_passed": true,
+      "loop_pass_count": 4,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 3.02,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation is concise, idiomatic, correct, and handles all edge cases including whitespace normalization optimally."
+        }
+      ]
+    },
+    {
+      "task_id": "task_002",
+      "title": "Valid Palindrome",
+      "difficulty": "easy",
+      "baseline_passed": true,
+      "baseline_pass_count": 4,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.45,
+      "loop_passed": true,
+      "loop_pass_count": 4,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 4.31,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation is correct, idiomatic, and handles edge cases properly with optimal time and space complexity."
+        }
+      ]
+    },
+    {
+      "task_id": "task_003",
+      "title": "Sum Even Fibonacci Numbers",
+      "difficulty": "easy",
+      "baseline_passed": true,
+      "baseline_pass_count": 3,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 16.88,
+      "loop_passed": true,
+      "loop_pass_count": 3,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 2.73,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation is correct, adheres to the required signature, efficiently computes the sum of even Fibonacci numbers, and correctly handles base cases like n < 2."
+        }
+      ]
+    },
+    {
+      "task_id": "task_004",
+      "title": "Count Vowels and Consonants",
+      "difficulty": "easy",
+      "baseline_passed": true,
+      "baseline_pass_count": 3,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.42,
+      "loop_passed": true,
+      "loop_pass_count": 3,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 2.4,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation correctly meets all requirements, handles edge cases such as empty strings and mixed-case alphabetical and non-alphabetical characters, uses optimal time and space complexity, and follows clean Python idioms."
+        }
+      ]
+    },
+    {
+      "task_id": "task_005",
+      "title": "Valid Bracket Matching",
+      "difficulty": "medium",
+      "baseline_passed": true,
+      "baseline_pass_count": 3,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.51,
+      "loop_passed": true,
+      "loop_pass_count": 3,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 12.25,
+      "rounds_used": 2,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The candidate implementation correctly handles bracket matching and ignores non-bracket characters, but suffers from suboptimal $O(N^2)$ performance due to calling `bracket_map.values()` inside the loop for every character. It requires revision to use a direct set or string lookup for opening brackets."
+        },
+        {
+          "round": 2,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The implementation is correct, handles edge cases appropriately according to the problem description, maintains optimal O(n) time and space complexity, and follows idiomatic Python practices."
+        }
+      ]
+    },
+    {
+      "task_id": "task_006",
+      "title": "Merge Overlapping Intervals",
+      "difficulty": "medium",
+      "baseline_passed": true,
+      "baseline_pass_count": 5,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.63,
+      "loop_passed": true,
+      "loop_pass_count": 5,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 3.02,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation is correct, optimal, and handles edge cases properly with a time complexity of O(N log N) and space complexity of O(N) for sorting and storing the result."
+        }
+      ]
+    },
+    {
+      "task_id": "task_007",
+      "title": "Run Length Encoding",
+      "difficulty": "medium",
+      "baseline_passed": true,
+      "baseline_pass_count": 4,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.64,
+      "loop_passed": true,
+      "loop_pass_count": 4,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 2.77,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation is correct, efficient, and clean, properly implementing the run-length encoding algorithm with optimal O(N) time and space complexity while handling edge cases like empty strings."
+        }
+      ]
+    },
+    {
+      "task_id": "task_008",
+      "title": "Flatten Nested Dictionary",
+      "difficulty": "medium",
+      "baseline_passed": true,
+      "baseline_pass_count": 3,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.55,
+      "loop_passed": true,
+      "loop_pass_count": 3,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 33.5,
+      "rounds_used": 3,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The implementation is functionally correct for standard dictionaries but suffers from suboptimal performance due to the creation of intermediate lists and dictionaries at every recursive step. Refactoring to use an accumulator or a generator would significantly improve efficiency."
+        },
+        {
+          "round": 2,
+          "verdict": "REVISE",
+          "issues_count": 1,
+          "summary": "The candidate implementation fails to adhere strictly to the required function signature specified in the prompt."
+        },
+        {
+          "round": 3,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation correctly implements dictionary flattening using recursion, handles mappings robustly via collections.abc.Mapping, preserves empty dictionaries as specified, and matches the required function signature and default parameters."
+        }
+      ]
+    },
+    {
+      "task_id": "task_009",
+      "title": "Longest Common Prefix",
+      "difficulty": "medium",
+      "baseline_passed": true,
+      "baseline_pass_count": 5,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.79,
+      "loop_passed": true,
+      "loop_pass_count": 5,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 6.08,
+      "rounds_used": 2,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The candidate implementation correctly finds the longest common prefix by sorting the array and comparing the first and last elements. However, mutating the input list with `.sort()` is a critical side-effect bug. The input list should not be modified, and `min(strs)` and `max(strs)` should be used instead."
+        },
+        {
+          "round": 2,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation correctly leverages lexicographical sorting properties (finding the minimum and maximum strings) to determine the longest common prefix in optimal time O(N * M) and space O(1) beyond input storage. Edge cases like empty lists or empty strings are handled properly, and the code is clean, idiomatic, and secure."
+        }
+      ]
+    },
+    {
+      "task_id": "task_010",
+      "title": "Evaluate Reverse Polish Notation",
+      "difficulty": "hard",
+      "baseline_passed": true,
+      "baseline_pass_count": 3,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.69,
+      "loop_passed": true,
+      "loop_pass_count": 3,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 6.21,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The provided solution for evaluating Reverse Polish Notation expressions is correct, handles edge cases such as negative numbers and truncation toward zero appropriately, and operates with optimal O(N) time and space complexity."
+        }
+      ]
+    },
+    {
+      "task_id": "task_011",
+      "title": "LRU Cache Simulation",
+      "difficulty": "hard",
+      "baseline_passed": true,
+      "baseline_pass_count": 2,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.75,
+      "loop_passed": true,
+      "loop_pass_count": 2,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 3.02,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation of the LRU cache simulation is correct, idiomatic, and highly efficient. It correctly uses collections.OrderedDict to achieve O(1) time complexity for both get and put operations, handles capacity eviction properly, and follows the specified function signature."
+        }
+      ]
+    },
+    {
+      "task_id": "task_012",
+      "title": "Parse and Validate SemVer",
+      "difficulty": "hard",
+      "baseline_passed": true,
+      "baseline_pass_count": 2,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 2.12,
+      "loop_passed": true,
+      "loop_pass_count": 2,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 40.47,
+      "rounds_used": 2,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The implementation fails to correctly handle valid SemVer prerelease strings containing hyphens due to a mismatch between the regex pattern and the manual validation logic. The 'isalnum()' check incorrectly rejects valid prerelease identifiers that contain hyphens."
+        },
+        {
+          "round": 2,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation strictly follows the required function signature and correctly fulfills all specifications for parsing and validating semantic versions, including handling leading zeros, numeric restrictions, prerelease formats, and edge cases."
+        }
+      ]
+    },
+    {
+      "task_id": "task_013",
+      "title": "Spiral Matrix Traversal",
+      "difficulty": "hard",
+      "baseline_passed": true,
+      "baseline_pass_count": 3,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.88,
+      "loop_passed": true,
+      "loop_pass_count": 3,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 3.32,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation correctly solves the spiral matrix traversal problem with optimal O(m * n) time complexity and O(1) auxiliary space (excluding the output list). All edge cases, including empty matrices, single rows, single columns, and non-square matrices, are handled correctly. The code is clean, readable, and well-structured."
+        }
+      ]
+    },
+    {
+      "task_id": "task_014",
+      "title": "Deep Merge Immutable Dictionaries",
+      "difficulty": "hard",
+      "baseline_passed": true,
+      "baseline_pass_count": 1,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 2.09,
+      "loop_passed": true,
+      "loop_pass_count": 1,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 3.06,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "false_rejection": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation correctly satisfies all functional requirements. It performs a deep merge of dictionaries, concatenates lists properly without mutating inputs, gives precedence to override values for other types, and utilizes deepcopy correctly to ensure strict purity."
+        }
+      ]
+    },
+    {
+      "task_id": "task_015",
+      "title": "Custom Delimiter Tokenizer with Escaping",
+      "difficulty": "hard",
+      "baseline_passed": true,
+      "baseline_pass_count": 4,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 1.69,
+      "loop_passed": true,
+      "loop_pass_count": 4,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 8.4,
+      "rounds_used": 3,
+      "stopped_reason": "stalled",
+      "false_approval": false,
+      "false_rejection": true,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The candidate implementation provides a solid structural start using a character-by-character state machine, but fails critical correctness requirements regarding the precise handling of escape character sequences and edge cases."
+        },
+        {
+          "round": 2,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The candidate implementation contains critical correctness issues regarding the handling of escaped escape characters. It must be revised to meet all specification requirements."
+        }
+      ]
+    }
+  ]
+}

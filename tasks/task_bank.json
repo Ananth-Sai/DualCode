@@ -1,0 +1,122 @@
+[
+  {
+    "id": "task_001",
+    "title": "Reverse Words in a Sentence",
+    "spec": "Given a string `sentence`, reverse the order of the words. Words are separated by one or more whitespace characters. The returned string should have words separated by a single space, with no leading or trailing whitespace.",
+    "function_signature": "def reverse_words(sentence: str) -> str:",
+    "difficulty": "easy",
+    "hidden_tests": "def test_basic():\n    assert reverse_words(\"the sky is blue\") == \"blue is sky the\"\n\ndef test_multiple_spaces():\n    assert reverse_words(\"  hello   world  \") == \"world hello\"\n\ndef test_single_word():\n    assert reverse_words(\"python\") == \"python\"\n\ndef test_empty():\n    assert reverse_words(\"\") == \"\"\n    assert reverse_words(\"   \") == \"\"\n"
+  },
+  {
+    "id": "task_002",
+    "title": "Valid Palindrome",
+    "spec": "Given a string `s`, return True if it is a palindrome, considering only alphanumeric characters and ignoring cases. Otherwise, return False.",
+    "function_signature": "def is_palindrome(s: str) -> bool:",
+    "difficulty": "easy",
+    "hidden_tests": "def test_palindrome_basic():\n    assert is_palindrome(\"A man, a plan, a canal: Panama\") is True\n\ndef test_palindrome_false():\n    assert is_palindrome(\"race a car\") is False\n\ndef test_palindrome_empty():\n    assert is_palindrome(\"\") is True\n    assert is_palindrome(\"   \") is True\n\ndef test_palindrome_symbols():\n    assert is_palindrome(\".,\") is True\n    assert is_palindrome(\"0P\") is False\n"
+  },
+  {
+    "id": "task_003",
+    "title": "Sum Even Fibonacci Numbers",
+    "spec": "Given an integer `n`, calculate the sum of all even Fibonacci numbers that do not exceed `n`. The Fibonacci sequence begins with 1, 2, 3, 5, 8... If n < 2, return 0.",
+    "function_signature": "def sum_even_fibonacci(n: int) -> int:",
+    "difficulty": "easy",
+    "hidden_tests": "def test_fib_small():\n    assert sum_even_fibonacci(1) == 0\n    assert sum_even_fibonacci(2) == 2\n    assert sum_even_fibonacci(8) == 10\n    assert sum_even_fibonacci(10) == 10\n\ndef test_fib_large():\n    assert sum_even_fibonacci(100) == 44\n\ndef test_fib_negative():\n    assert sum_even_fibonacci(-5) == 0\n"
+  },
+  {
+    "id": "task_004",
+    "title": "Count Vowels and Consonants",
+    "spec": "Given a string `s`, return a dictionary with keys 'vowels' and 'consonants' representing their respective counts. Vowels are 'a', 'e', 'i', 'o', 'u' (case-insensitive). Consonants are any alphabetical characters that are not vowels. Ignore numbers, punctuation, and spaces.",
+    "function_signature": "def count_vowels_and_consonants(s: str) -> dict[str, int]:",
+    "difficulty": "easy",
+    "hidden_tests": "def test_vowels_consonants():\n    res = count_vowels_and_consonants(\"Hello, World!\")\n    assert res == {\"vowels\": 3, \"consonants\": 7}\n\ndef test_empty():\n    assert count_vowels_and_consonants(\"\") == {\"vowels\": 0, \"consonants\": 0}\n\ndef test_digits_and_symbols():\n    assert count_vowels_and_consonants(\"12345!@#$\") == {\"vowels\": 0, \"consonants\": 0}\n"
+  },
+  {
+    "id": "task_005",
+    "title": "Valid Bracket Matching",
+    "spec": "Given a string `s` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. Open brackets must be closed by the same type of brackets in the correct order. Any non-bracket characters should be ignored.",
+    "function_signature": "def is_valid_brackets(s: str) -> bool:",
+    "difficulty": "medium",
+    "hidden_tests": "def test_valid():\n    assert is_valid_brackets(\"()[]{}\") is True\n    assert is_valid_brackets(\"{[()]}\") is True\n    assert is_valid_brackets(\"a(b[c]d)e\") is True\n\ndef test_invalid():\n    assert is_valid_brackets(\"(]\") is False\n    assert is_valid_brackets(\"([)]\") is False\n    assert is_valid_brackets(\"(\") is False\n    assert is_valid_brackets(\"]\") is False\n    assert is_valid_brackets(\"(((\") is False\n    assert is_valid_brackets(\"(()\") is False\n    assert is_valid_brackets(\"[(])\") is False\n    assert is_valid_brackets(\"}{\") is False\n    assert is_valid_brackets(\"a(b[c)d]e\") is False\n\ndef test_empty():\n    assert is_valid_brackets(\"\") is True\n"
+  },
+  {
+    "id": "task_006",
+    "title": "Merge Overlapping Intervals",
+    "spec": "Given an array of `intervals` where intervals[i] = [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input, sorted by start time.",
+    "function_signature": "def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:",
+    "difficulty": "medium",
+    "hidden_tests": "def test_merge_basic():\n    assert merge_intervals([[1,3],[2,6],[8,10],[15,18]]) == [[1,6],[8,10],[15,18]]\n\ndef test_merge_touching():\n    assert merge_intervals([[1,4],[4,5]]) == [[1,5]]\n\ndef test_empty_and_single():\n    assert merge_intervals([]) == []\n    assert merge_intervals([[1,4]]) == [[1,4]]\n\ndef test_unsorted_input():\n    assert merge_intervals([[5,8],[1,3],[2,4]]) == [[1,4],[5,8]]\n\ndef test_nested_and_identical():\n    assert merge_intervals([[1, 10], [2, 3], [4, 5]]) == [[1, 10]]\n    assert merge_intervals([[1, 4], [2, 3]]) == [[1, 4]]\n    assert merge_intervals([[2, 3], [4, 5], [1, 4]]) == [[1, 5]]\n"
+  },
+  {
+    "id": "task_007",
+    "title": "Run Length Encoding",
+    "spec": "Given a string `s`, return its run-length encoding format where consecutive occurrences of the same character are replaced by the count followed by the character (e.g., 'AAABCC' -> '3A1B2C'). Return an empty string if `s` is empty.",
+    "function_signature": "def run_length_encoding(s: str) -> str:",
+    "difficulty": "medium",
+    "hidden_tests": "def test_rle_basic():\n    assert run_length_encoding(\"AAABCC\") == \"3A1B2C\"\n\ndef test_rle_single():\n    assert run_length_encoding(\"A\") == \"1A\"\n\ndef test_rle_empty():\n    assert run_length_encoding(\"\") == \"\"\n\ndef test_rle_mixed():\n    assert run_length_encoding(\"aabbaa\") == \"2a2b2a\"\n"
+  },
+  {
+    "id": "task_008",
+    "title": "Flatten Nested Dictionary",
+    "spec": "Given a nested dictionary `d`, flatten it into a single-level dictionary where keys are concatenated using `sep` (default '.'). If an empty dict is a value, it can be preserved as an empty dict or omitted.",
+    "function_signature": "def flatten_dict(d: dict, parent_key: str = '', sep: str = '.') -> dict:",
+    "difficulty": "medium",
+    "hidden_tests": "def test_flatten():\n    data = {'a': 1, 'b': {'c': 2, 'd': {'e': 3}}}\n    expected = {'a': 1, 'b.c': 2, 'b.d.e': 3}\n    assert flatten_dict(data) == expected\n\ndef test_custom_sep():\n    data = {'user': {'name': 'Alice'}}\n    assert flatten_dict(data, sep='/') == {'user/name': 'Alice'}\n\ndef test_flat_input():\n    assert flatten_dict({'x': 10, 'y': 20}) == {'x': 10, 'y': 20}\n    assert flatten_dict({}) == {}\n"
+  },
+  {
+    "id": "task_009",
+    "title": "Longest Common Prefix",
+    "spec": "Given an array of strings `strs`, find the longest common prefix string amongst them. If there is no common prefix, return an empty string \"\".",
+    "function_signature": "def longest_common_prefix(strs: list[str]) -> str:",
+    "difficulty": "medium",
+    "hidden_tests": "def test_prefix_common():\n    assert longest_common_prefix([\"flower\",\"flow\",\"flight\"]) == \"fl\"\n\ndef test_prefix_none():\n    assert longest_common_prefix([\"dog\",\"racecar\",\"car\"]) == \"\"\n\ndef test_prefix_empty_list():\n    assert longest_common_prefix([]) == \"\"\n\ndef test_prefix_single():\n    assert longest_common_prefix([\"alone\"]) == \"alone\"\n\ndef test_prefix_exact():\n    assert longest_common_prefix([\"test\",\"test\",\"test\"]) == \"test\"\n"
+  },
+  {
+    "id": "task_010",
+    "title": "Evaluate Reverse Polish Notation",
+    "spec": "Evaluate the value of an arithmetic expression in Reverse Polish Notation given as a list of strings `tokens`. Valid operators are '+', '-', '*', and '/'. Each operand may be an integer or another expression. Division between two integers should truncate toward zero (e.g. 7 / -3 = -2, not -3; and 1 / -2 = 0, not -1).",
+    "function_signature": "def evaluate_rpn(tokens: list[str]) -> int:",
+    "difficulty": "hard",
+    "hidden_tests": "def test_rpn_simple():\n    assert evaluate_rpn([\"2\", \"1\", \"+\", \"3\", \"*\"]) == 9\n    assert evaluate_rpn([\"4\", \"13\", \"5\", \"/\", \"+\"]) == 6\n\ndef test_rpn_truncation():\n    assert evaluate_rpn([\"10\", \"6\", \"9\", \"3\", \"+\", \"-11\", \"*\", \"/\", \"*\", \"17\", \"+\", \"5\", \"+\"]) == 22\n    assert evaluate_rpn([\"7\", \"-3\", \"/\"]) == -2\n\ndef test_rpn_negative_division():\n    assert evaluate_rpn([\"-7\", \"3\", \"/\"]) == -2\n    assert evaluate_rpn([\"1\", \"-2\", \"/\"]) == 0\n    assert evaluate_rpn([\"-1\", \"2\", \"/\"]) == 0\n"
+  },
+  {
+    "id": "task_011",
+    "title": "LRU Cache Simulation",
+    "spec": "Implement an LRU Cache simulation given `capacity` and a list of operations `operations`. Each operation is a tuple `(cmd, key, value)` where cmd is either 'get' (value is None) or 'put' (value is int). Return a list containing the results of all 'get' operations in order. A 'get' returns the value if present (and marks it recently used), or -1 if not found. When 'put' exceeds capacity, evict the least recently used key.",
+    "function_signature": "def lru_cache_simulation(operations: list[tuple[str, int, int | None]], capacity: int) -> list[int]:",
+    "difficulty": "hard",
+    "hidden_tests": "def test_lru_basic():\n    ops = [\n        (\"put\", 1, 10),\n        (\"put\", 2, 20),\n        (\"get\", 1, None),\n        (\"put\", 3, 30),\n        (\"get\", 2, None),\n        (\"get\", 3, None)\n    ]\n    # cap=2: (1,10), (2,20). get 1 -> 10, now 1 is recent, 2 is LRU. put (3,30) evicts 2. get 2 -> -1, get 3 -> 30\n    assert lru_cache_simulation(ops, 2) == [10, -1, 30]\n\ndef test_lru_update_existing():\n    ops = [\n        (\"put\", 1, 100),\n        (\"put\", 1, 200),\n        (\"get\", 1, None)\n    ]\n    assert lru_cache_simulation(ops, 1) == [200]\n"
+  },
+  {
+    "id": "task_012",
+    "title": "Parse and Validate SemVer",
+    "spec": "Parse a semantic version string in the format 'MAJOR.MINOR.PATCH' or 'MAJOR.MINOR.PATCH-PRERELEASE'. MAJOR, MINOR, and PATCH must be non-negative integers without leading zeros (unless the value is '0'). The PRERELEASE identifier (if present) must be a non-empty dot-separated series of alphanumeric identifiers with no empty parts or spaces, and numeric prerelease identifiers must not contain leading zeros. If invalid, raise ValueError. Return a tuple of `(major: int, minor: int, patch: int, prerelease: str | None)`.",
+    "function_signature": "def parse_and_validate_semver(version: str) -> tuple[int, int, int, str | None]:",
+    "difficulty": "hard",
+    "hidden_tests": "import pytest\n\ndef test_valid_semver():\n    assert parse_and_validate_semver(\"1.2.3\") == (1, 2, 3, None)\n    assert parse_and_validate_semver(\"0.10.2-alpha\") == (0, 10, 2, \"alpha\")\n    assert parse_and_validate_semver(\"2.0.0-rc.1\") == (2, 0, 0, \"rc.1\")\n    assert parse_and_validate_semver(\"0.0.0\") == (0, 0, 0, None)\n\ndef test_invalid_semver():\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"1.02.3\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"01.0.0\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"1.2\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"1.2.3.4\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"v1.2.3\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"-1.2.3\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"1.2.3-\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"1.2.3-alpha..1\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"1.2.3-alpha 1\")\n    with pytest.raises(ValueError):\n        parse_and_validate_semver(\"1.2.3-01\")\n"
+  },
+  {
+    "id": "task_013",
+    "title": "Spiral Matrix Traversal",
+    "spec": "Given an m x n `matrix`, return all elements of the matrix in spiral order (clockwise starting from top-left). If the matrix is empty or has empty rows, return an empty list.",
+    "function_signature": "def matrix_spiral_order(matrix: list[list[int]]) -> list[int]:",
+    "difficulty": "hard",
+    "hidden_tests": "def test_spiral_square():\n    m = [\n        [1, 2, 3],\n        [4, 5, 6],\n        [7, 8, 9]\n    ]\n    assert matrix_spiral_order(m) == [1, 2, 3, 6, 9, 8, 7, 4, 5]\n\ndef test_spiral_rect():\n    m = [\n        [1, 2, 3, 4],\n        [5, 6, 7, 8],\n        [9, 10, 11, 12]\n    ]\n    assert matrix_spiral_order(m) == [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]\n\ndef test_spiral_empty():\n    assert matrix_spiral_order([]) == []\n    assert matrix_spiral_order([[]]) == []\n"
+  },
+  {
+    "id": "task_014",
+    "title": "Deep Merge Immutable Dictionaries",
+    "spec": "Deeply merge two nested dictionaries `base` and `override` into a new dictionary. If a key exists in both and both values are dictionaries, recursively merge them. If both values are lists, concatenate them (`base` list elements followed by `override` list elements). For any other value types, the value from `override` takes precedence. CRITICAL: Neither `base` nor `override` (nor any nested dictionaries or lists within them) must be modified in-place; the function must be strictly pure and return a new dictionary.",
+    "function_signature": "def deep_merge_immutable(base: dict, override: dict) -> dict:",
+    "difficulty": "hard",
+    "hidden_tests": "def test_merge_immutability():\n    d1 = {'a': 1, 'b': {'c': [1, 2]}, 'd': {'nested': 10}}\n    d2 = {'b': {'c': [3, 4], 'extra': 5}, 'd': {'nested': 20}}\n    d1_copy = {'a': 1, 'b': {'c': [1, 2]}, 'd': {'nested': 10}}\n    res = deep_merge_immutable(d1, d2)\n    assert d1 == d1_copy, 'Original base dict was mutated!'\n    assert res == {'a': 1, 'b': {'c': [1, 2, 3, 4], 'extra': 5}, 'd': {'nested': 20}}\n    res['b']['c'].append(999)\n    assert d1['b']['c'] == [1, 2], 'Mutating result affected original base list!'\n"
+  },
+  {
+    "id": "task_015",
+    "title": "Custom Delimiter Tokenizer with Escaping",
+    "spec": "Split string `s` by any single character found in `delimiters`, respecting `escape_char` (default '\\'). An escaped delimiter (preceded by an unescaped escape character) must be treated as a literal character rather than a split boundary, and the escape character must be stripped from the resulting token. Escaped escape characters (e.g., '\\\\') should produce a literal '\\'. Consecutive unescaped delimiters must produce empty string tokens \"\".",
+    "function_signature": "def custom_tokenizer(s: str, delimiters: str, escape_char: str = '\\\\') -> list[str]:",
+    "difficulty": "hard",
+    "hidden_tests": "def test_basic_tokenizing():\n    assert custom_tokenizer(\"a,b;c\", \",;\") == [\"a\", \"b\", \"c\"]\n\ndef test_escaped_delimiters():\n    assert custom_tokenizer(r\"a\\,b,c\", \",\") == [\"a,b\", \"c\"]\n    assert custom_tokenizer(r\"hello\\\\world,test\", \",\") == [\"hello\\\\world\", \"test\"]\n\ndef test_consecutive_delimiters():\n    assert custom_tokenizer(\"a,,b\", \",\") == [\"a\", \"\", \"b\"]\n    assert custom_tokenizer(\",\", \",\") == [\"\", \"\"]\n\ndef test_escaped_escape_before_delimiter():\n    assert custom_tokenizer(r\"a\\\\,b\", \",\") == [\"a\\\\\", \"b\"]\n"
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "run_timestamp": "20261012_083129",
+  "task_count": 2,
+  "baseline_pass_rate": 1.0,
+  "critic_loop_pass_rate": 1.0,
+  "lift": 0.0,
+  "avg_rounds_to_approve": 1.0,
+  "false_approval_rate": 0.0,
+  "stall_rate": 0.0,
+  "critic_intervention_count": 1,
+  "critic_intervention_rate": 0.5,
+  "revision_success_rate": 1.0,
+  "avg_baseline_latency_sec": 2.34,
+  "avg_loop_latency_sec": 7.36,
+  "per_task_results": [
+    {
+      "task_id": "task_014",
+      "title": "Deep Merge Immutable Dictionaries",
+      "difficulty": "hard",
+      "baseline_passed": true,
+      "baseline_pass_count": 1,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 2.67,
+      "loop_passed": true,
+      "loop_pass_count": 1,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 3.85,
+      "rounds_used": 1,
+      "stopped_reason": "approved",
+      "false_approval": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "APPROVE",
+          "issues_count": 0,
+          "summary": "The candidate implementation strictly satisfies all requirements, correctly uses deepcopy to guarantee immutability of nested structures, handles dictionary recursion, list concatenation, and fallback precedence accurately, and is well-documented."
+        }
+      ]
+    },
+    {
+      "task_id": "task_015",
+      "title": "Custom Delimiter Tokenizer with Escaping",
+      "difficulty": "hard",
+      "baseline_passed": true,
+      "baseline_pass_count": 3,
+      "baseline_fail_count": 0,
+      "baseline_latency_sec": 2.01,
+      "loop_passed": true,
+      "loop_pass_count": 3,
+      "loop_fail_count": 0,
+      "loop_latency_sec": 10.87,
+      "rounds_used": 3,
+      "stopped_reason": "max_rounds",
+      "false_approval": false,
+      "verdict_history": [
+        {
+          "round": 1,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The candidate implementation contains a critical correctness bug in how escape sequences are handled. Specifically, it only treats the next character as escaped if it is a delimiter or the escape character itself, leaving other characters incorrectly parsed."
+        },
+        {
+          "round": 2,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The candidate implementation has a correctness issue with handling consecutive or nested escape characters, specifically regarding how escaped escape characters are processed and whether they lose their escape semantics."
+        },
+        {
+          "round": 3,
+          "verdict": "REVISE",
+          "issues_count": 2,
+          "summary": "The candidate implementation has correctness bugs regarding trailing escape characters and edge cases with empty delimiters."
+        }
+      ]
+    }
+  ]
+}

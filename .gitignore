@@ -1,0 +1,8 @@
+venv/
+.env
+Guides/
+*.zip
+__pycache__/
+*.pyc
+.pytest_cache/
+eval_results/*.json
